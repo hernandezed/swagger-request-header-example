@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API</title>
+    <link href='//fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'/>
+    <link href='webjars/swagger-ui/${swagger-ui.version}/css/reset.css' media='screen' rel='stylesheet'
+          type='text/css'/>
+    <link href='webjars/swagger-ui/${swagger-ui.version}/css/screen.css' media='screen' rel='stylesheet'
+          type='text/css'/>
+    <link href='webjars/swagger-ui/${swagger-ui.version}/css/reset.css' media='print' rel='stylesheet' type='text/css'/>
+    <link href='webjars/swagger-ui/${swagger-ui.version}/css/screen.css' media='print' rel='stylesheet'
+          type='text/css'/>
+    <script type="text/javascript" src="webjars/swagger-ui/${swagger-ui.version}/lib/shred.bundle.js"></script>
+    <script src='webjars/swagger-ui/${swagger-ui.version}/lib/jquery-1.8.0.min.js' type='text/javascript'></script>
+    <script src='webjars/swagger-ui/${swagger-ui.version}/lib/jquery.slideto.min.js' type='text/javascript'></script>
+    <script src='webjars/swagger-ui/${swagger-ui.version}/lib/jquery.wiggle.min.js' type='text/javascript'></script>
+    <script src='webjars/swagger-ui/${swagger-ui.version}/lib/jquery.ba-bbq.min.js' type='text/javascript'></script>
+    <script src='webjars/swagger-ui/${swagger-ui.version}/lib/handlebars-1.0.0.js' type='text/javascript'></script>
+    <script src='webjars/swagger-ui/${swagger-ui.version}/lib/underscore-min.js' type='text/javascript'></script>
+    <script src='webjars/swagger-ui/${swagger-ui.version}/lib/backbone-min.js' type='text/javascript'></script>
+    <script src='webjars/swagger-ui/${swagger-ui.version}/lib/swagger.js' type='text/javascript'></script>
+    <script src='webjars/swagger-ui/${swagger-ui.version}/swagger-ui.js' type='text/javascript'></script>
+    <script src='webjars/swagger-ui/${swagger-ui.version}/lib/highlight.7.3.pack.js' type='text/javascript'></script>
+
+    <!-- enabling this will enable oauth2 implicit scope support -->
+    <script src='webjars/swagger-ui/${swagger-ui.version}/lib/swagger-oauth.js' type='text/javascript'></script>
+
+    <script type="text/javascript">
+    $(function () {
+      window.swaggerUi = new SwaggerUi({
+      url: "http://localhost:9000/api-docs",
+      dom_id: "swagger-ui-container",
+      supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
+      onComplete: function(swaggerApi, swaggerUi){
+        log("Loaded SwaggerUI");
+
+        $('pre code').each(function(i, e) {
+          hljs.highlightBlock(e)
+        });
+      },
+      onFailure: function(data) {
+        log("Unable to Load SwaggerUI");
+      },
+      docExpansion: "none",
+      sorter : "alpha"
+    });
+
+    window.swaggerUi.load();
+  });
+
+    </script>
+</head>
+
+<body class="swagger-section">
+<div id="message-bar" class="swagger-ui-wrap">&nbsp;</div>
+<div id="swagger-ui-container" class="swagger-ui-wrap"></div>
+</body>
+</html>
