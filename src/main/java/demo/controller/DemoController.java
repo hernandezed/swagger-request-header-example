@@ -14,9 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 @Api("demo")
 public class DemoController {
 
-    @RequestMapping(value = "/{name}", method = RequestMethod.GET) // swagger-springmvc does not resolve {name}
+    @RequestMapping(value = "/getSomeResource", method = RequestMethod.GET)
     @ApiOperation("Get some resource")
     public MyComplexType getSomeResource(@RequestParam final String param1, @RequestParam final String param2) {
         return new MyComplexType(param1, param2);
+    }
+
+    @RequestMapping(value = "/sayHello", method = RequestMethod.GET)
+    @ApiOperation("Say hello")
+    public String sayHello(@RequestParam final String name) {
+        return "Hello " + name + "!";
     }
 }

@@ -17,6 +17,15 @@ public class WebMvc extends WebMvcConfigurerAdapter {
 
     @Override
     public void configureMessageConverters(final List<HttpMessageConverter<?>> converters) {
+        converters.add(xStreamMessageConverter());
+    }
+
+    @Override
+    public void configureContentNegotiation(final ContentNegotiationConfigurer configurer) {
+        configurer.defaultContentType(MediaType.APPLICATION_JSON);
+    }
+
+    public static HttpMessageConverter<?> xStreamMessageConverter() {
         final List<MediaType> mediaTypes = new ArrayList<>();
         mediaTypes.add(MediaType.APPLICATION_XML);
         mediaTypes.add(MediaType.valueOf(Versions.V1_0_XML));
@@ -25,14 +34,9 @@ public class WebMvc extends WebMvcConfigurerAdapter {
         // Omit package names in XML
         marshaller.getXStream().aliasPackage("", "demo.transport");
         final MarshallingHttpMessageConverter xmlConverter = new MarshallingHttpMessageConverter(marshaller,
-                                                                                                 marshaller);
+                marshaller);
         xmlConverter.setSupportedMediaTypes(mediaTypes);
 
-        converters.add(xmlConverter);
-    }
-
-    @Override
-    public void configureContentNegotiation(final ContentNegotiationConfigurer configurer) {
-        configurer.defaultContentType(MediaType.APPLICATION_JSON);
+        return xmlConverter;
     }
 }
