@@ -1,13 +1,8 @@
 package demo.transport;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
 import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 import lombok.Value;
-
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @Value
 @ApiModel("Some complex type")
@@ -28,12 +23,12 @@ public class MyComplexType {
         this.value2 = value2;
     }
 
-    @JsonGetter
+    // @JsonGetter
     public String value1() {
         return value1;
     }
 
-    @JsonGetter
+    // @JsonGetter
     public String value2() {
         return value2;
     }
