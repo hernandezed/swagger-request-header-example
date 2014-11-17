@@ -17,6 +17,7 @@
 
         <swagger-springmvc.version>0.9.1</swagger-springmvc.version>
         <swagger-ui.version>2.0.24</swagger-ui.version>
+        <xstream.version>1.4.7</xstream.version>
         <lombok.version>1.14.8</lombok.version>
     </properties>
 
@@ -32,6 +33,15 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-ws</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>${xstream.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

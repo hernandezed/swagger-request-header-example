@@ -1,4 +1,4 @@
-package demo;
+package demo.transport;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.wordnik.swagger.annotations.ApiModel;
@@ -10,8 +10,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Value
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
 @ApiModel("Some complex type")
 public class MyComplexType {
 
@@ -20,7 +18,7 @@ public class MyComplexType {
     @ApiModelProperty(required = true)
     private final String value2;
 
-    // Required for jaxb
+    // Required for Jackson and XStream
     private MyComplexType() {
         this(null, null);
     }

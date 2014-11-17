@@ -1,4 +1,4 @@
-package demo;
+package demo.configuration;
 
 import com.mangofactory.swagger.configuration.SpringSwaggerConfig;
 import com.mangofactory.swagger.plugin.EnableSwagger;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @Configuration
 @EnableSwagger
-public class SwaggerConfiguration {
+public class Swagger {
 
     private SpringSwaggerConfig springSwaggerConfig;
 
