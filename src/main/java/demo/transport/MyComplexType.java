@@ -23,12 +23,12 @@ public class MyComplexType {
         this.value2 = value2;
     }
 
-    // @JsonGetter
+    // @JsonGetter (disable as workaround for #494 in swagger-springmvc)
     public String value1() {
         return value1;
     }
 
-    // @JsonGetter
+    // @JsonGetter (disable as workaround for #494 in swagger-springmvc)
     public String value2() {
         return value2;
     }

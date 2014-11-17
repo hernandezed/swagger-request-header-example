@@ -6,6 +6,7 @@ import demo.transport.MyComplexType;
 import demo.Versions;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -13,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @Api("demo")
 public class DemoController {
 
-    @RequestMapping(value = "/getSomeResource", method = RequestMethod.GET)
+    @RequestMapping(value = "/{name}", method = RequestMethod.GET) // swagger-springmvc does not resolve {name}
     @ApiOperation("Get some resource")
-    public MyComplexType getSomeResource(final String param1, final String param2) {
+    public MyComplexType getSomeResource(@RequestParam final String param1, @RequestParam final String param2) {
         return new MyComplexType(param1, param2);
     }
 }
