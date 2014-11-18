@@ -2,6 +2,7 @@ package demo;
 
 import demo.configuration.WebMvc;
 import demo.transport.MyComplexType;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -27,12 +28,11 @@ import static org.junit.Assert.assertThat;
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
 @IntegrationTest
+@Slf4j
 public class ApplicationIT {
 
     @Value("${local.server.port}")
     int httpPort;
-
-    private static final Logger log = LoggerFactory.getLogger(ApplicationIT.class);
 
     @Test
     public void testGetSomResourceJson() {
@@ -58,8 +58,8 @@ public class ApplicationIT {
         ResponseEntity<MyComplexType> responseEntity = getSomeResource(restTemplate(), mediaType);
 
         assertThat(responseEntity.getStatusCode(), is(HttpStatus.OK));
-        assertThat(responseEntity.getBody().value1(), is("foo"));
-        assertThat(responseEntity.getBody().value2(), is("bar"));
+        assertThat(responseEntity.getBody().getValue1(), is("foo"));
+        assertThat(responseEntity.getBody().getValue2(), is("bar"));
 
         return responseEntity;
     }
@@ -74,14 +74,14 @@ public class ApplicationIT {
                 HttpMethod.GET,
                 requestEntity,
                 MyComplexType.class);
-        log.debug("Response: " + responseEntity.toString());
+        log.debug("Response: " + responseEntity);
 
         return responseEntity;
     }
 
     private HttpHeaders httpHeadersWithAccept(final String mediaType) {
         final HttpHeaders headers = new HttpHeaders();
-        final List<MediaType> mediaTypes = new ArrayList<MediaType>();
+        final List<MediaType> mediaTypes = new ArrayList<>();
 
         mediaTypes.add(MediaType.valueOf(mediaType));
         headers.setAccept(mediaTypes);

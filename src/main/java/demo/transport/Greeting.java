@@ -1,12 +1,10 @@
 package demo.transport;
 
+import lombok.RequiredArgsConstructor;
 import lombok.Value;
 
 @Value
+@RequiredArgsConstructor
 public class Greeting {
     private final String greeting;
-
-    public Greeting(final String greeting) {
-        this.greeting = greeting;
-    }
 }

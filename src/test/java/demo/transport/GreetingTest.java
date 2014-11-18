@@ -13,5 +13,4 @@ public class GreetingTest {
 
         assertTrue(mapper.canSerialize(Greeting.class));
     }
-
 }

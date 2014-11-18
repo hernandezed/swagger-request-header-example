@@ -1,5 +1,7 @@
 package demo.transport;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 import lombok.Value;
@@ -13,21 +15,9 @@ public class MyComplexType {
     @ApiModelProperty(required = true)
     private final String value2;
 
-    // Required for Jackson and XStream
-    private MyComplexType() {
-        this(null, null);
-    }
-
-    public MyComplexType(final String value1, final String value2) {
+    @JsonCreator
+    public MyComplexType(@JsonProperty("value1") final String value1, @JsonProperty("value2") final String value2) {
         this.value1 = value1;
         this.value2 = value2;
-    }
-
-    public String value1() {
-        return value1;
-    }
-
-    public String value2() {
-        return value2;
     }
 }
