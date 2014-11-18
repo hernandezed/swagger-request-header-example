@@ -1,12 +1,14 @@
-Spring boot application demonstrating a bug in swagger-springmvc
-================================================================
+Spring boot microservice application
+====================================
 
-This small Spring Boot application consists of following components
+This small Spring Boot application acting as a kind of blueprint for a typical microservice.
+It contains following components:
 
 * A small demo REST controller which takes 2 arguments as request parameters and sends the response back as an JSON or XML response
+* API versioning via content type negotiation and vendor specific MIME types
 * Spring security configuration for basic authentication
-* Swagger SpringMVC configuration
-* An index.html file using swagger-ui
+* Swagger SpringMVC integration for generated API documentation
+* An index.html file using swagger-ui for browsing the API documentaion including Javascript test client
 
 Initial setup
 -------------
