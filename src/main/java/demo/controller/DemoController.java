@@ -2,6 +2,7 @@ package demo.controller;
 
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
+import demo.transport.Greeting;
 import demo.transport.MyComplexType;
 import demo.Versions;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,7 @@ public class DemoController {
 
     @RequestMapping(value = "/sayHello", method = RequestMethod.GET)
     @ApiOperation("Say hello")
-    public String sayHello(@RequestParam final String name) {
-        return "Hello " + name + "!";
+    public Greeting sayHello(@RequestParam final String name) {
+        return new Greeting("Hello " + name + "!");
     }
 }

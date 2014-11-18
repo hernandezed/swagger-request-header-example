@@ -1,6 +1,7 @@
 package demo.configuration;
 
 import demo.Versions;
+import demo.transport.MyComplexType;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -32,7 +33,7 @@ public class WebMvc extends WebMvcConfigurerAdapter {
 
         final XStreamMarshaller marshaller = new XStreamMarshaller();
         // Omit package names in XML
-        marshaller.getXStream().aliasPackage("", "demo.transport");
+        marshaller.getXStream().aliasPackage("", MyComplexType.class.getPackage().getName());
         final MarshallingHttpMessageConverter xmlConverter = new MarshallingHttpMessageConverter(marshaller,
                 marshaller);
         xmlConverter.setSupportedMediaTypes(mediaTypes);
