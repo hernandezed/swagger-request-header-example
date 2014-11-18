@@ -16,3 +16,5 @@ Initial setup
 1. `mvn verify`
 2. `java -jar target/swagger-springmvc-bug.1.1.8.RELEASE.jar`
    (`mvn spring-boot:run` works but resource filtering used in index.html does not work)
+3. `http://localhost:9000` shows the API documentation provided by swagger-ui
+4. Test user via basic authentication is `user` with password `password`
